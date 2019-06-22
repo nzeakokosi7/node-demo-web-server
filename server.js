@@ -7,6 +7,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000
 
 var app = express();
 
@@ -23,9 +24,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintainance.hbs');
-  });
+// app.use((req, res, next) => {
+//     res.render('maintainance.hbs');
+//   });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -63,6 +64,6 @@ app.get('/bad', (req, res) => {
 });
 
 //Allow the server to run on port 3000
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is now running on port ${port}`);
 });
